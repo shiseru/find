@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   get '/' => "home#top"
   get 'about' => "home#about"
   
