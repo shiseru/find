@@ -11,16 +11,33 @@
 
   <body>
     <header>
-      <nav>
+      <div class="header-logo">
+        <%= link_to("FIND", "/") %>
+      </div>
+      <ul class="header-menus">
         <% if user_signed_in? %>
-        
-        <%= link_to 'change profile', edit_user_registration_path %>
-        <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+        <li>
+          <%= link_to 'change profile', edit_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+        </li>
         <% else %>
-        <%= link_to 'sign up', new_user_registration_path %>
-        <%= link_to 'login', new_user_session_path %>
-        <% end %>
-      </nav>
+        <li>
+          <%= link_to 'sign up', new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to 'login', new_user_session_path %>
+        </li>
+        <% end%>
+        </li>
+        <li>
+          <%= link_to("What's Find", "/about") %>
+        </li>
+        <li>
+          <%= link_to("Posted Books", "/items") %>
+        </li>
+      </ul>
     </header>
 
     <p class="notice"><%= notice %></p>
