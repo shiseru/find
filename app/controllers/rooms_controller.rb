@@ -5,11 +5,13 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
+    @messages = Message.all
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @messages = Message.all
   end
 
   # GET /rooms/new
