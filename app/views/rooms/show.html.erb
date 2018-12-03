@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="main posts-index">
+  <div class="container">
+    <p>
+      <strong>Owner:</strong>
+      <%= @room.owner_id %>
+    </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @room.owner_id %>
-</p>
+    <p>
+      <strong>Participant:</strong>
+      <%= @room.participant_id %>
+    </p>
 
-<p>
-  <strong>Participant:</strong>
-  <%= @room.participant_id %>
-</p>
+    <% @messages.each do |message| %>
+      <div class="posts-index-item">
+        <%= link_to("id#{message.content}", "/") %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', rooms_path %>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
-
-hey
-<%= @messages.find(1).content %>
-hey
-<%= @room %>
+  </div>
+  <%= form_tag("/rooms/#{@room.id}/create_message") do %>
+    <div class="form">
+      <div class="form-body">
+        <textarea name="content"></textarea>
+        <input type="submit" value= "post">
+      </div>
+    </div>
+  <% end %>
+</div>

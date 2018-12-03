@@ -28,6 +28,17 @@
   </tbody>
 </table>
 
-<br>
-
 <%= link_to 'New Item', new_item_path %>
+
+<div class="main posts-index">
+  <div class="container">
+    <% @items.each do |item| %>
+      <div class="posts-index-item">
+        <%= link_to(item.title, "/items/#{item.id}") %>
+        <%= link_to(item.title, "/items/#{item.id}") %>
+        <%= link_to(item.image, "/items/#{item.id}") %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
