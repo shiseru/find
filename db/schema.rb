@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_181401) do
+ActiveRecord::Schema.define(version: 2018_12_03_192511) do
 
   create_table "items", force: :cascade do |t|
     t.string "title"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_181401) do
     t.integer "participant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "itemname_id"
-    t.index ["itemname_id"], name: "index_rooms_on_itemname_id"
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_rooms_on_item_id"
     t.index ["owner_id"], name: "index_rooms_on_owner_id"
     t.index ["participant_id"], name: "index_rooms_on_participant_id"
   end
