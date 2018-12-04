@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The service offerece the textbook trading opportunities between students.
 
-Things you may want to cover:
+From https://findinutoronto.herokuapp.com/
 
-* Ruby version
+Go to "posted books" on the header
 
-* System dependencies
+You can check the textbooks on sale.
 
-* Configuration
+From "negotiate" link in the product detail page, users can chat each other to make deal
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
