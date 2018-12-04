@@ -7,7 +7,6 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
-    @messages = Message.all
   end
 
   # GET /rooms/1

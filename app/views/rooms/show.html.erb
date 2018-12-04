@@ -1,6 +1,9 @@
 <div class="main posts-index">
   <div class="container">
     <p>
+      <strong>Chat Room: here you can chat!</strong>
+    </p>
+    <p>
       <strong>Owner user id:</strong>
       <%= @room.owner_id %>
     </p>
@@ -20,7 +23,7 @@
 
       </div>
     <% end %>
-    <%= link_to 'Back to mypage', rooms_path %>
+    <%= link_to 'Back to top', '/' %>
   </div>
   <%= form_tag("/rooms/#{@room.id}/create_message") do %>
     <div class="form">
