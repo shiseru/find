@@ -23,8 +23,12 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @item.image %>
+  <%= image_tag @item.image.url %>
 </p>
+<% if current_user.id == @item.user_id then %> 
+<%= link_to 'Edit', edit_item_path(@item) %> 
+<% else %>
+<%= link_to("negotiate", "rooms/#{@item.user_id}/#{current_user.id}/create") %>
+<% end %>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

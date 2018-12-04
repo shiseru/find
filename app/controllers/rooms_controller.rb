@@ -1,3 +1,5 @@
+
+
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
@@ -5,11 +7,23 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
+    @messages = Message.all
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @room_id = params[:id]
+    if is_authorized?(@room_id, current_user.id) then
+      @messages = Message.where(room_id: @room_id).order(created_at: :asc)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+    
+  end
+
+  def is_authorized?(room_id, user_id)
+    return (Room.find(room_id).owner_id == user_id) || (Room.find(room_id).participant_id == user_id)
   end
 
   # GET /rooms/new
@@ -24,17 +38,31 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params)
+    owner_id = params[:owner_id]
+    participant_id = params[:participant_id]
+    
+    @room = Room.new(owner_id: owner_id, participant_id: participant_id)
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to @room, notice: 'Room was successfully created. Here you can Chat!' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_message
+    room_id = params[:id]
+    user_id = current_user.id
+    message_content = params[:content]
+
+    @message = Message.new(room_id: room_id, user_id: user_id, content: message_content)
+    @message.save
+
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /rooms/1

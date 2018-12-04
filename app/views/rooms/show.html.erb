@@ -1,14 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="main posts-index">
+  <div class="container">
+    <p>
+      <strong>Owner user id:</strong>
+      <%= @room.owner_id %>
+    </p>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @room.owner_id %>
-</p>
+    <p>
+      <strong>Participant user id:</strong>
+      <%= @room.participant_id %>
+    </p>
 
-<p>
-  <strong>Participant:</strong>
-  <%= @room.participant_id %>
-</p>
+    <% @messages.each do |message| %>
+      <div class="posts-index-item">
+        <% if current_user.id == message.user_id then %> 
+        <%= "user id#{@room.owner_id}: #{message.content}" %>
+        <% else %>
+        <%= "user id#{@room.participant_id}: #{message.content}" %>
+        <% end %>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+      </div>
+    <% end %>
+    <%= link_to 'Back to mypage', rooms_path %>
+  </div>
+  <%= form_tag("/rooms/#{@room.id}/create_message") do %>
+    <div class="form">
+      <div class="form-body">
+        <textarea name="content"></textarea>
+        <input type="submit" value= "post">
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
