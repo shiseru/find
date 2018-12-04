@@ -10,11 +10,10 @@ Rails.application.routes.draw do
   post "rooms/:id/create_message" => "rooms#create_message"
 
   devise_for :users
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions'
-  # }
+
   resources :users
   resources :items
+  get "items/rooms/:owner_id/:participant_id/create" => "rooms#create"
   
   root to: "items#index"
 end

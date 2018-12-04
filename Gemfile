@@ -7,6 +7,8 @@ ruby '2.4.0'
 gem 'devise'
 #upload image
 gem 'carrierwave', '~> 1.0'
+#resize the image
+gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
 # Use Puma as the app server

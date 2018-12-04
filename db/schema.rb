@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_192511) do
     t.integer "participant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "item_id"
-    t.index ["item_id"], name: "index_rooms_on_item_id"
     t.index ["owner_id"], name: "index_rooms_on_owner_id"
     t.index ["participant_id"], name: "index_rooms_on_participant_id"
   end

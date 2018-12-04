@@ -22,14 +22,14 @@
     min-height: 1vh;
   }
   
-  /* .main {
+  .main {
     position: absolute;
     top: 64px;
     width: 100%;
     height: auto;
     min-height: 100%;
     background-color: #f5f8fa;
-  } */
+  }
   
   .container {
     max-width: 600px;

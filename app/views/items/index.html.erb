@@ -19,7 +19,7 @@
         <td><%= item.title %></td>
         <td><%= item.description %></td>
         <td><%= item.price %></td>
-        <td><%= item.image %></td>
+        <%= image_tag item.image.url %>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,15 +30,15 @@
 
 <%= link_to 'New Item', new_item_path %>
 
-<div class="main posts-index">
+<%# <div class="main posts-index">
   <div class="container">
     <% @items.each do |item| %>
-      <div class="posts-index-item">
-        <%= link_to(item.title, "/items/#{item.id}") %>
-        <%= link_to(item.title, "/items/#{item.id}") %>
-        <%= link_to(item.image, "/items/#{item.id}") %>
-      </div>
-    <% end %>
+      <%# <div class="posts-index-item"> %>
+        <%# <%= link_to(item.title, "/items/#{item.id}") %> %>
+        <%# <%= link_to(item.title, "/items/#{item.id}") %> %>
+        <%# <%= link_to(item.image, "/items/#{item.id}") %> %>
+      <%# </div> %>
+    <%# <% end %> %>
 
-  </div>
-</div>
+  <%# </div> %>
+<%# </div> %> %>
