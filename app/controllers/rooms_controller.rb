@@ -12,17 +12,13 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-    @room_id = params[:id]
-    if is_authorized?(@room_id, current_user.id) then
-      @messages = Message.where(room_id: @room_id).order(created_at: :asc)
+    room = Room.find(params[:id])
+    if room.is_authorized?(current_user.id) then
+      @messages = Message.where(room_id: params[:id]).order(created_at: :asc)
     else
       raise ActionController::RoutingError.new('Not Found')
     end
     
-  end
-
-  def is_authorized?(room_id, user_id)
-    return (Room.find(room_id).owner_id == user_id) || (Room.find(room_id).participant_id == user_id)
   end
 
   # GET /rooms/new

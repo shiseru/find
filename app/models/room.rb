@@ -5,7 +5,7 @@ class Room < ApplicationRecord
 
   has_many :messages #一つの部屋に複数のメッセージがもてる
 
-  # def is_authorized?(room_id, user_id)
-  #   return (Room.find(room_id).owner_id == user_id) || (Room.find(room_id).participant_id == user_id)
-  # end
+  def is_authorized?(user_id)
+    return owner_id == user_id || participant_id == user_id
+  end
 end
