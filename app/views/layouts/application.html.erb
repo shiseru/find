@@ -40,7 +40,16 @@
       </ul>
     </header>
 
-    <p class="notice"><%= notice %></p>
+    <% if flash[:notice]%>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:error_message]%> 
+      <div class="error-flash">
+        <%= flash[:error_message] %>
+      </div>
+    <% end %>
+
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
