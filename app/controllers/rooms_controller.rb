@@ -55,11 +55,14 @@ class RoomsController < ApplicationController
     message_content = params[:content]
 
     @message = Message.new(room_id: room_id, user_id: user_id, content: message_content)
+
     if @message.save then
-      redirect_back(fallback_location: root_path)
+      flash[:notice] = "Successfully, posted new message!"
     else
-      redirect_back(fallback_location: root_path)
+      flash[:error_message] = "Error, You cannot post empty or too long message"
     end
+
+      redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /rooms/1
