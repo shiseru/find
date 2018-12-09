@@ -55,9 +55,11 @@ class RoomsController < ApplicationController
     message_content = params[:content]
 
     @message = Message.new(room_id: room_id, user_id: user_id, content: message_content)
-    @message.save
-
-    redirect_back(fallback_location: root_path)
+    if @message.save then
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   # PATCH/PUT /rooms/1
