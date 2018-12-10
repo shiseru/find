@@ -1,5 +1,3 @@
-
-
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
@@ -38,14 +36,16 @@ class RoomsController < ApplicationController
     
     @room = Room.new(owner_id: owner_id, participant_id: participant_id)
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created. Here you can Chat!' }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+    if @room.save then
+      respond_to do |format|
+      format.html { redirect_to @room, notice: 'Room was successfully created. Here you can Chat!' }
+      format.json { render :show, status: :created, location: @room }
       end
+    else
+      flash[:error_message] = 'You have already chatting with the seller'
+      @room = Room.where(["owner_id = ? and participant_id = ?", owner_id, current_user.id])
+      redirect_to("/rooms/#{@room.ids[0]}")
+
     end
   end
 
