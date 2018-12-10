@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   get '/' => "home#top"
   get 'about' => "home#about"
+  get 'mypage' => "home#mypage"
   # practice
   # get 'p' => "rooms#show"
   # 

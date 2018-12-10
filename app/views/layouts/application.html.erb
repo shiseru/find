@@ -11,13 +11,13 @@
 
   <body>
     <header>
-      <div class="header-logo">
-        <%= link_to("FIND", "/") %>
+      <div class='header-logo'>
+        <%= link_to 'FIND', '/' %>
       </div>
-      <ul class="header-menus">
+      <ul class='header-menus'>
         <% if user_signed_in? %>
         <li>
-          <%= link_to 'change profile', edit_user_registration_path %>
+          <%= link_to 'mypage', '/mypage' %>
         </li>
         <li>
           <%= link_to 'logout', destroy_user_session_path, method: :delete %>
@@ -32,25 +32,25 @@
         <% end%>
         </li>
         <li>
-          <%= link_to("What's Find", "/about") %>
+          <%= link_to "What's Find", '/about' %>
         </li>
         <li>
-          <%= link_to("Posted Books", "/items") %>
+          <%= link_to 'Posted Books', '/items' %>
         </li>
       </ul>
     </header>
 
     <% if flash[:notice]%>
-      <div class="flash">
+      <div class='flash'>
         <%= flash[:notice] %>
       </div>
     <% elsif flash[:error_message]%> 
-      <div class="error-flash">
+      <div class='error-flash'>
         <%= flash[:error_message] %>
       </div>
     <% end %>
 
-    <p class="alert"><%= alert %></p>
+    <p class='alert'><%= alert %></p>
     <%= yield %>
   </body>
 </html>
