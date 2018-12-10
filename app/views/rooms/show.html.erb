@@ -1,4 +1,4 @@
-<div class="main posts-index">
+<div class="main">
   <div class="container">
     <p>
       <strong>Chat Room: here you can chat!</strong>
@@ -14,7 +14,7 @@
     </p>
 
     <% @messages.each do |message| %>
-      <div class="posts-index-item">
+      <div class="messages-index-item">
         <% if current_user.id == message.user_id then %> 
         <%= "user id#{@room.owner_id}: #{message.content}" %>
         <% else %>

@@ -1,36 +1,37 @@
-<div class="main posts-index">
-  <p>
-    <strong>Seller:</strong>
-    <%= @item.user.id %>
-  </p>
+<div class="main">
+  <div class="container">
+    <p>
+      <strong>Seller:</strong>
+      <%= @item.user.id %>
+    </p>
 
-  <p>
-    <strong>Product name:</strong>
-    <%= @item.title %>
-  </p>
+    <p>
+      <strong>Product name:</strong>
+      <%= @item.title %>
+    </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @item.description %>
-  </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @item.description %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= "#{@item.price} $" %>
-  </p>
+    <p>
+      <strong>Price:</strong>
+      <%= "#{@item.price} $" %>
+    </p>
 
-  <p>
-    <strong>Image</strong>
-    <%= image_tag @item.image.url %>
-  </p>
-  <% if current_user.id == @item.user_id then %> 
-  <%= link_to 'Edit', edit_item_path(@item) %> 
-  <% else %>
-  <%# <%= link_to("negotiate: start chatting", "rooms/#{@item.user_id}/#{current_user.id}/create") %> 
-    <%= link_to("rooms/#{@item.user_id}/#{current_user.id}/create", {method:"post"}) do %>
-      <button>negotiate</button>
+    <p>
+      <strong>Image</strong>
+      <%= image_tag @item.image.url %>
+    </p>
+    <% if current_user.id == @item.user_id then %> 
+    <%= link_to 'Edit', edit_item_path(@item) %> 
+    <% else %>
+      <%= link_to("rooms/#{@item.user_id}/#{current_user.id}/create", {method:"post"}) do %>
+        <button>negotiate</button>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= link_to 'Back', items_path %>
+    <%= link_to 'Back', items_path %>
+  </div>
 </div>

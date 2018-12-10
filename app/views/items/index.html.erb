@@ -1,8 +1,8 @@
-<div class="main posts-index">
+<div class="main">
   <div class="container">
   Click Item to see details
     <% @items.each do |item| %>
-      <div class="posts-index-item">
+      <div class="items-index-item">
         <%= link_to("#{item.title} #{item.price} $", item) %>
       </div>
     <% end %>
