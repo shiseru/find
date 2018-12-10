@@ -38,14 +38,16 @@ class RoomsController < ApplicationController
     
     @room = Room.new(owner_id: owner_id, participant_id: participant_id)
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created. Here you can Chat!' }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+    if @room.save then
+      respond_to do |format|
+      format.html { redirect_to @room, notice: 'Room was successfully created. Here you can Chat!' }
+      format.json { render :show, status: :created, location: @room }
       end
+    else
+      flash[:error_notice] = 'You have already chatting with the seller'
+      # @room = Room.where(owner_id: current_user.id).and(Room.where(participant_id: current_user.id))
+      @room = Room.where(["owner_id = ? and participant_id = ?", owner_id, current_user.id])
+      redirect_to("rooms/#{@room.id}")
     end
   end
 
