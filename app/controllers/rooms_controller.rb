@@ -61,8 +61,8 @@ class RoomsController < ApplicationController
     else
       flash[:error_message] = "Error, You cannot post empty or too long message"
     end
-
-      redirect_back(fallback_location: root_path)
+    
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /rooms/1
