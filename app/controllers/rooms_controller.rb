@@ -1,5 +1,3 @@
-
-
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
@@ -44,10 +42,10 @@ class RoomsController < ApplicationController
       format.json { render :show, status: :created, location: @room }
       end
     else
-      flash[:error_notice] = 'You have already chatting with the seller'
-      # @room = Room.where(owner_id: current_user.id).and(Room.where(participant_id: current_user.id))
+      flash[:error_message] = 'You have already chatting with the seller'
       @room = Room.where(["owner_id = ? and participant_id = ?", owner_id, current_user.id])
-      redirect_to("rooms/#{@room.id}")
+      redirect_to("/rooms/#{@room.ids[0]}")
+
     end
   end
 
