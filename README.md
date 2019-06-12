@@ -1,6 +1,6 @@
 # README
 
-The service offerece the textbook trading opportunities between students.
+The service offeres the textbook trading opportunities between students.
 
 <img width="1662" alt="Screen Shot 2019-06-12 at 17 38 37" src="https://user-images.githubusercontent.com/32105339/59388638-4c588500-8d3a-11e9-8388-8c1e9b14b959.png">
 
