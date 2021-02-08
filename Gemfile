@@ -6,7 +6,7 @@ ruby '2.4.0'
 #enable to register users' info
 gem 'devise'
 #upload image
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 #resize the image
 gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
